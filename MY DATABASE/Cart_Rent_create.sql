@@ -1,8 +1,3 @@
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2018-04-26 02:00:00.8
-
--- tables
--- Table: Cars
 CREATE TABLE Cars (
     CarID int  NOT NULL IDENTITY(1, 1),
     Plate varchar(10)  NOT NULL,
@@ -125,6 +120,3 @@ ALTER TABLE RolesPermissions ADD CONSTRAINT ScreenPermissions_Roles
 ALTER TABLE Users ADD CONSTRAINT Users_Roles
     FOREIGN KEY (RoleID)
     REFERENCES Roles (RoleID);
-
--- End of file.
-
