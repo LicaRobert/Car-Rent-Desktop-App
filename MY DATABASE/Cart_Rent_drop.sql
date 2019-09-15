@@ -1,7 +1,4 @@
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2018-04-26 02:00:00.8
 
--- foreign keys
 ALTER TABLE Reservations DROP CONSTRAINT Reservations_Cars;
 
 ALTER TABLE Reservations DROP CONSTRAINT Reservations_Coupons;
