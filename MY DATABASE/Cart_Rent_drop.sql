@@ -1,4 +1,3 @@
-
 ALTER TABLE Reservations DROP CONSTRAINT Reservations_Cars;
 
 ALTER TABLE Reservations DROP CONSTRAINT Reservations_Coupons;
@@ -33,6 +32,3 @@ DROP TABLE Roles;
 DROP TABLE RolesPermissions;
 
 DROP TABLE Users;
-
--- End of file.
-
