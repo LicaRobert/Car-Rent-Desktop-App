@@ -36,26 +36,36 @@ namespace RentCarDesktopApp
             if (!isValid || birthDateTextBox.Text == "")
             {
                 MessageBox.Show("Invalid birth date.");
+                MenuScreenForm form = new MenuScreenForm();
+                form.Show();
             }
 
             else if (clientNameTextBox.Text == "")
             {
                 MessageBox.Show("Introduce a client name.");
+                MenuScreenForm form = new MenuScreenForm();
+                form.Show();
             }
 
             else if (locationTextBox.Text == "")
             {
                 MessageBox.Show("Introduce a location.");
+                MenuScreenForm form = new MenuScreenForm();
+                form.Show();
             }
 
             else if (ZIPCodeTextBox.Text.Length < 6)
             {
                 MessageBox.Show("The ZIP Code cannot be lower than 6 characters.");
+                MenuScreenForm form = new MenuScreenForm();
+                form.Show();
             }
 
             else if (clientIDTextBox.Text == "")
             {
                 MessageBox.Show("Introduce an ID to know what customer you want to update.");
+                MenuScreenForm form = new MenuScreenForm();
+                form.Show();
             }
 
 

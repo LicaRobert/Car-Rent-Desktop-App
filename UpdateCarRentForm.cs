@@ -42,23 +42,24 @@ namespace RentCarDesktopApp
             DateTime startData = DateTime.Parse(startDateTextBox.Text);
             DateTime endData = DateTime.Parse(endDateTextBox.Text);
 
-            if (!isValid || startDateTextBox.Text == "")
+            if (!isValid || startDateTextBox.Text == "" || !isValid2 || endDateTextBox.Text == "")
             {
-                MessageBox.Show("Invalid start date.");
-            }
-
-            else if (!isValid2 || endDateTextBox.Text == "")
-            {
-                MessageBox.Show("Invalid end date.");
+                MessageBox.Show("Invalid date.");
+                MenuScreenForm form = new MenuScreenForm();
+                form.Show();
             }
 
             else if (cityTextBox.Text == "")
             {
                 MessageBox.Show("Introduce a city.");
+                MenuScreenForm form = new MenuScreenForm();
+                form.Show();
             }
             else if (startData > endData)
             {
                 MessageBox.Show("The start data cannot be bigger or equal than the end data.");
+                MenuScreenForm form = new MenuScreenForm();
+                form.Show();
             }
 
             else
@@ -124,7 +125,7 @@ namespace RentCarDesktopApp
 
                 else
                 {
-                    MessageBox.Show("The car rent ID id does not exist or the model of the car or the client ID or the location it does not exists in our database to be updated.");
+                    MessageBox.Show("The car rent ID or the model of the car or the client ID or the location it does not exists in our database to be updated.");
                 }
 
             }

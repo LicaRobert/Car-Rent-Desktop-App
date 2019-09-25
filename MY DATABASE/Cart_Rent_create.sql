@@ -1,3 +1,5 @@
+--first create academy_net database and after that,right click on database,new query and start inserting the info down below.
+
 CREATE TABLE Cars (
     CarID int  NOT NULL IDENTITY(1, 1),
     Plate varchar(10)  NOT NULL,
