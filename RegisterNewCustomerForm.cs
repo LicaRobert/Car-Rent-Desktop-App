@@ -31,33 +31,26 @@ namespace RentCarDesktopApp
             DateTime dt;
             isValid = DateTime.TryParseExact(birthDateTextBox.Text, "dd/MM/yyyy", new CultureInfo("en-GB"), System.Globalization.DateTimeStyles.None, out dt);
 
+            con.Open();
 
             if (!isValid || birthDateTextBox.Text == "")
             {
                 MessageBox.Show("Invalid birth date.");
-                MenuScreenForm form = new MenuScreenForm();
-                form.Show();
             }
 
             else if(clientNameTextBox.Text == "")
             {
                 MessageBox.Show("Introduce a client name.");
-                MenuScreenForm form = new MenuScreenForm();
-                form.Show();
             }
 
             else if (locationTextBox.Text == "")
             {
                 MessageBox.Show("Introduce a location.");
-                MenuScreenForm form = new MenuScreenForm();
-                form.Show();
             }
 
             else if (ZIPCodeTextBox.Text.Length < 6)
             {
                 MessageBox.Show("The ZIP Code cannot be lower than 6 characters.");
-                MenuScreenForm form = new MenuScreenForm();
-                form.Show();
             }
 
 
@@ -68,7 +61,6 @@ namespace RentCarDesktopApp
 
             else
             {
-                con.Open();
 
                 SqlCommand cmd2;
                 cmd2 = new SqlCommand("Select * FROM Customers WHERE Name = '" + clientNameTextBox.Text + "'", con);
@@ -95,12 +87,13 @@ namespace RentCarDesktopApp
 
                     Close();
 
-                    con.Close();
-
                     MenuScreenForm form = new MenuScreenForm();
                     form.Show();
                 }
             }
+
+            con.Close();
+
         }
 
         private void ZIPCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)

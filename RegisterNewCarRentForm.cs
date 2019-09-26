@@ -36,29 +36,24 @@ namespace RentCarDesktopApp
             DateTime startData = DateTime.Parse(startDateTextBox.Text);
             DateTime endData = DateTime.Parse(endDateTextBox.Text);
 
+            con.Open();
+
             if (!isValid || startDateTextBox.Text == "" || !isValid2 || endDateTextBox.Text == "")
             {
                 MessageBox.Show("Invalid date.");
-                MenuScreenForm form = new MenuScreenForm();
-                form.Show();
             }
 
             else if (cityTextBox.Text == "")
             {
                 MessageBox.Show("Introduce a city.");
-                MenuScreenForm form = new MenuScreenForm();
-                form.Show();
             }
             else if(startData > endData)
             {
                 MessageBox.Show("The start data cannot be bigger or equal than the end data.");
-                MenuScreenForm form = new MenuScreenForm();
-                form.Show();
             }
 
             else 
             {
-                con.Open();
 
                 //if the model of the car does not exist in the Cars table it will give an error.
                 SqlCommand command = con.CreateCommand();
@@ -97,8 +92,6 @@ namespace RentCarDesktopApp
 
                     Close();
 
-                    con.Close();
-
 
                     MenuScreenForm form = new MenuScreenForm();
                     form.Show();
@@ -108,6 +101,9 @@ namespace RentCarDesktopApp
                 {
                     MessageBox.Show("The model of the car or the client ID or the location it does not exists in our database.Please check again.");
                 }
+
+                con.Close();
+
             }
         }
 

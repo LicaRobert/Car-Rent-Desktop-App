@@ -42,29 +42,24 @@ namespace RentCarDesktopApp
             DateTime startData = DateTime.Parse(startDateTextBox.Text);
             DateTime endData = DateTime.Parse(endDateTextBox.Text);
 
+            con.Open();
+
             if (!isValid || startDateTextBox.Text == "" || !isValid2 || endDateTextBox.Text == "")
             {
                 MessageBox.Show("Invalid date.");
-                MenuScreenForm form = new MenuScreenForm();
-                form.Show();
             }
 
             else if (cityTextBox.Text == "")
             {
                 MessageBox.Show("Introduce a city.");
-                MenuScreenForm form = new MenuScreenForm();
-                form.Show();
             }
             else if (startData > endData)
             {
                 MessageBox.Show("The start data cannot be bigger or equal than the end data.");
-                MenuScreenForm form = new MenuScreenForm();
-                form.Show();
             }
 
             else
             {
-                con.Open();
 
                 //if the car rent ID does not exist it will cannot update anything.
 
@@ -117,8 +112,6 @@ namespace RentCarDesktopApp
 
                     Close();
 
-                    con.Close();
-
                     MenuScreenForm form = new MenuScreenForm();
                     form.Show();
                 }
@@ -129,6 +122,7 @@ namespace RentCarDesktopApp
                 }
 
             }
+            con.Close();
         }
     }
 }

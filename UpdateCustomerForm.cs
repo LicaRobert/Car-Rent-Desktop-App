@@ -32,46 +32,36 @@ namespace RentCarDesktopApp
             DateTime dt;
             isValid = DateTime.TryParseExact(birthDateTextBox.Text, "dd/MM/yyyy", new CultureInfo("en-GB"), System.Globalization.DateTimeStyles.None, out dt);
 
+            con.Open();
 
             if (!isValid || birthDateTextBox.Text == "")
             {
                 MessageBox.Show("Invalid birth date.");
-                MenuScreenForm form = new MenuScreenForm();
-                form.Show();
             }
 
             else if (clientNameTextBox.Text == "")
             {
                 MessageBox.Show("Introduce a client name.");
-                MenuScreenForm form = new MenuScreenForm();
-                form.Show();
             }
 
             else if (locationTextBox.Text == "")
             {
                 MessageBox.Show("Introduce a location.");
-                MenuScreenForm form = new MenuScreenForm();
-                form.Show();
             }
 
             else if (ZIPCodeTextBox.Text.Length < 6)
             {
                 MessageBox.Show("The ZIP Code cannot be lower than 6 characters.");
-                MenuScreenForm form = new MenuScreenForm();
-                form.Show();
             }
 
             else if (clientIDTextBox.Text == "")
             {
                 MessageBox.Show("Introduce an ID to know what customer you want to update.");
-                MenuScreenForm form = new MenuScreenForm();
-                form.Show();
             }
 
 
             else
             {
-                con.Open();
 
                 SqlCommand cmd2;
                 cmd2 = new SqlCommand("Select * FROM Customers WHERE CostumerID = '" + clientIDTextBox.Text + "'", con);
@@ -91,8 +81,6 @@ namespace RentCarDesktopApp
 
                     Close();
 
-                    con.Close();
-
                     MenuScreenForm form = new MenuScreenForm();
                     form.Show();
                 }
@@ -104,8 +92,8 @@ namespace RentCarDesktopApp
                     MessageBox.Show("The customer inserted with this ID " + clientIDTextBox.Text + " does not exists.");
                     ds.Clear();
                 }
-
             }
+            con.Close();
         }
         private void ZIPCodeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
